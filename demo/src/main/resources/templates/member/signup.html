@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        label { display: block; margin-top: 10px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        .btn { margin-top: 15px; padding: 8px 16px; }
+        .msg { font-size: 12px; margin-top: 4px; }
+        .msg.ok { color: green; }
+        .msg.error { color: red; }
+        .error-global { color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<h1>회원가입</h1>
+
+<div th:if="${errorMessage}" class="error-global" th:text="${errorMessage}"></div>
+
+<form th:action="@{/member/signup}" method="post" onsubmit="return validateForm();">
+    <label>아이디 (이름)</label>
+    <input type="text" id="username" name="username" required>
+    <div id="usernameMsg" class="msg"></div>
+
+    <label>비밀번호</label>
+    <input type="password" id="password" name="password" required>
+    <div id="passwordMsg" class="msg"></div>
+
+    <label>이메일</label>
+    <input type="email" id="email" name="email" required>
+    <div id="emailMsg" class="msg"></div>
+
+    <button type="submit" class="btn">회원가입</button>
+    <a href="/" class="btn">취소</a>
+</form>
+
+<script>
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    const usernameMsg = document.getElementById("usernameMsg");
+    const emailMsg = document.getElementById("emailMsg");
+    const passwordMsg = document.getElementById("passwordMsg");
+
+    let usernameAvailable = false;
+    let emailAvailable = false;
+
+    usernameInput.addEventListener("blur", function () {
+        const value = usernameInput.value.trim();
+        if (!value) {
+            usernameMsg.textContent = "아이디를 입력해주세요.";
+            usernameMsg.className = "msg error";
+            usernameAvailable = false;
+            return;
+        }
+
+        fetch(`/member/check-username?username=` + encodeURIComponent(value))
+            .then(res => res.json())
+            .then(data => {
+                if (data.available) {
+                    usernameMsg.textContent = "사용 가능한 아이디입니다.";
+                    usernameMsg.className = "msg ok";
+                    usernameAvailable = true;
+                } else {
+                    usernameMsg.textContent = "이미 사용 중인 아이디입니다.";
+                    usernameMsg.className = "msg error";
+                    usernameAvailable = false;
+                }
+            })
+            .catch(() => {
+                usernameMsg.textContent = "중복 확인 중 오류가 발생했습니다.";
+                usernameMsg.className = "msg error";
+                usernameAvailable = false;
+            });
+    });
+
+    emailInput.addEventListener("blur", function () {
+        const value = emailInput.value.trim();
+        if (!value) {
+            emailMsg.textContent = "이메일을 입력해주세요.";
+            emailMsg.className = "msg error";
+            emailAvailable = false;
+            return;
+        }
+
+        fetch(`/member/check-email?email=` + encodeURIComponent(value))
+            .then(res => res.json())
+            .then(data => {
+                if (data.available) {
+                    emailMsg.textContent = "사용 가능한 이메일입니다.";
+                    emailMsg.className = "msg ok";
+                    emailAvailable = true;
+                } else {
+                    emailMsg.textContent = "이미 사용 중인 이메일입니다.";
+                    emailMsg.className = "msg error";
+                    emailAvailable = false;
+                }
+            })
+            .catch(() => {
+                emailMsg.textContent = "중복 확인 중 오류가 발생했습니다.";
+                emailMsg.className = "msg error";
+                emailAvailable = false;
+            });
+    });
+
+    passwordInput.addEventListener("blur", function () {
+        const value = passwordInput.value;
+        if (value.length < 4) {
+            passwordMsg.textContent = "비밀번호는 최소 4자 이상이어야 합니다.";
+            passwordMsg.className = "msg error";
+        } else {
+            passwordMsg.textContent = "";
+            passwordMsg.className = "msg";
+        }
+    });
+
+    function validateForm() {
+        if (!usernameAvailable) {
+            alert("아이디 중복 여부를 확인해주세요.");
+            usernameInput.focus();
+            return false;
+        }
+        if (!emailAvailable) {
+            alert("이메일 중복 여부를 확인해주세요.");
+            emailInput.focus();
+            return false;
+        }
+        if (passwordInput.value.length < 4) {
+            alert("비밀번호는 최소 4자 이상이어야 합니다.");
+            passwordInput.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>

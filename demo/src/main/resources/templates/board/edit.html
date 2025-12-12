@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        label { display: block; margin-top: 10px; }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        textarea { height: 150px; }
+        .btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            display: inline-block;
+            border: 1px solid #333;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>게시글 수정</h1>
+
+<form th:action="@{|/board/${post.id}/edit|}" th:object="${post}" method="post">
+    <label>제목</label>
+    <input type="text" th:field="*{title}" />
+
+    <label>내용</label>
+    <textarea th:field="*{content}"></textarea>
+
+    <button type="submit" class="btn">수정 완료</button>
+    <a th:href="@{|/board/${post.id}|}" class="btn">취소</a>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .field-label { font-weight: bold; margin-top: 10px; }
+        .btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            display: inline-block;
+            border: 1px solid #333;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            background: #f9f9f9;
+        }
+        .btn-danger {
+            border-color: #c00;
+            color: #c00;
+        }
+        form { display: inline; }
+    </style>
+</head>
+<body>
+<h1>게시글 상세</h1>
+
+<div>
+    <div class="field-label">ID</div>
+    <div th:text="${post.id}">1</div>
+
+    <div class="field-label">제목</div>
+    <div th:text="${post.title}">제목</div>
+
+    <div class="field-label">내용</div>
+    <div th:text="${post.content}">내용</div>
+</div>
+
+<p>
+    <a href="/board" class="btn">목록으로</a>
+
+    <!-- 수정 버튼 -->
+    <a th:href="@{|/board/${post.id}/edit|}" class="btn">수정</a>
+
+    <!-- 삭제 버튼 (POST 전송) -->
+<form th:action="@{|/board/${post.id}/delete|}" method="post"
+      onsubmit="return confirm('정말 삭제할까요?');">
+    <button type="submit" class="btn btn-danger">삭제</button>
+</form>
+</p>
+
+</body>
+</html>

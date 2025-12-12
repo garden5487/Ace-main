@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>테스트 홈페이지</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; }
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-weight: bold; font-size: 20px; }
+        nav a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        nav a:hover { text-decoration: underline; }
+        main {
+            padding: 20px;
+            min-height: calc(100vh - 120px);
+        }
+        footer {
+            background: #f2f2f2;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">정원의 테스트 사이트</div>
+    <nav>
+        <a href="/">HOME</a>
+        <a href="/about">ABOUT</a>
+        <a href="/board">BOARD</a>
+    </nav>
+</header>
+
+<main>
+    <h1>홈페이지가 정상적으로 동작합니다 🎉</h1>
+    <p>이 페이지가 보인다면, Spring Boot + HTML 연동이 성공한 거예요.</p>
+</main>
+
+<footer>
+    &copy; 2025 정원. All rights reserved.
+</footer>
+</body>
+</html>
