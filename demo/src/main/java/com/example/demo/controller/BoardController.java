@@ -2,10 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Post;
 import com.example.demo.repository.PostRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@Profile("!nodb")
 @Controller
 @RequestMapping("/board")
 public class BoardController {

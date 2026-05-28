@@ -2,9 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.model.Member;
 import com.example.demo.repository.MemberRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@Profile("!nodb")
 @Service
 public class MemberService {
 

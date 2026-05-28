@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Member;
 import com.example.demo.service.MemberService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.Map;
 
+@Profile("!nodb")
 @Controller
 @RequestMapping("/member")
 public class MemberController {
