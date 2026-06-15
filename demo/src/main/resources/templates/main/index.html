@@ -1,131 +1,189 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>GREEN SHOP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>에이스 화훼몰</title>
     <link rel="stylesheet" href="/main/index.css">
 </head>
 <body>
 
-<header class="header">
-    <div class="header-inner">
-        <button class="menu-btn">☰</button>
-
-        <h1 class="logo">GREEN<span>SHOP</span></h1>
-
-        <div class="search-box">
-            <select>
-                <option>통합검색</option>
-                <option>상품검색</option>
-                <option>게시판검색</option>
-            </select>
-            <input type="text" placeholder="검색어를 입력하세요">
-            <button>🔍</button>
-        </div>
-
-        <nav class="user-menu">
-            <a href="/member/login">로그인</a>
-            <a href="/member/signup">회원가입</a>
-            <a href="/board/list">게시판</a>
-        </nav>
+<header class="top-banner">
+    <div class="top-title">
+        <h1>원예 / 자재 / 구근 / 숙근(뿌리) / 종자 / 식물 영양제 종합 쇼핑몰</h1>
+        <p>농업회사법인 우리화훼종묘(주)와 함께!</p>
     </div>
+    <div class="w-logo">W</div>
 </header>
 
+<div class="utility">
+    <div class="inner utility-inner">
+        <div class="sns">
+            <span>◎</span>
+            <span>f</span>
+            <span>talk</span>
+            <span>✿</span>
+        </div>
+
+        <div class="user-links">
+            <a href="/member/login">로그인</a>
+            <a href="/member/signup">회원가입</a>
+            <a href="#">장바구니 <b>0</b></a>
+            <a href="#">주문</a>
+            <a href="#">내정보</a>
+            <a href="/board/list">게시판</a>
+        </div>
+    </div>
+</div>
+
+<section class="brand-header">
+    <div class="inner brand-inner">
+        <div class="flower-preview">
+            <button>‹</button>
+            <div class="flower-box">
+                <div class="flower-img"></div>
+                <p>라인이 아름다운<br><strong>칼라</strong></p>
+            </div>
+            <button>›</button>
+        </div>
+
+        <div class="main-logo">
+            <p>농업회사법인 우리화훼종묘(주)</p>
+            <h2>e-shop 인터넷 쇼핑몰</h2>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="크리칼 생화를 으라으래~">
+            <button>🔍</button>
+            <div>
+                <a href="#">백합</a>
+                <a href="#">칼라</a>
+                <a href="#">아이리스</a>
+                <a href="#">아마릴리스</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <nav class="category">
-    <div class="category-inner">
-        <a href="#">베스트</a>
-        <a href="#">쇼킹딜</a>
-        <a href="#">마트플러스</a>
-        <a href="#">쿠폰/기획전</a>
-        <a href="#">9900원샵</a>
-        <a href="#">브랜드</a>
-        <a href="#">이벤트</a>
+    <div class="inner category-inner">
+        <button class="all-btn">☰<br>ALL</button>
+        <a href="#">자재</a>
+        <a href="#">봄 심기 구근</a>
+        <a href="#">여름 심기 구근</a>
+        <a href="#">가을 심기 구근</a>
+        <a href="#">숙근류 (뿌리)</a>
+        <a href="#">묘목 (나무)</a>
+        <a href="#">종자(씨앗)</a>
+        <a href="#">도자기 분재</a>
+        <a href="#">관엽·서양란 화분</a>
+        <a href="#">포트상품</a>
+        <a href="#">개인결제</a>
     </div>
 </nav>
 
 <main>
     <section class="hero">
-        <div class="hero-track">
-            <article class="banner small pink">
-                <div class="banner-text">
-                    <p>오늘의 특가</p>
-                    <h2>생활용품<br>초특가</h2>
-                    <span>AD</span>
-                </div>
-            </article>
-
-            <article class="banner large light">
-                <div class="banner-text dark">
-                    <p>GREEN SHOP</p>
-                    <h2>인기 상품<br>이월 특가</h2>
-                    <span>~30%</span>
-                </div>
-            </article>
-
-            <article class="banner large hot">
-                <div class="banner-text">
-                    <p>시즌 추천</p>
-                    <h2>여름 상품<br>기획전</h2>
-                    <span>~15%</span>
-                </div>
-            </article>
+        <button class="hero-arrow left">‹</button>
+        <div class="hero-text">
+            <h2>농업회사법인<br>우리화훼종묘 (주) 공식 인터넷 쇼핑몰</h2>
+            <p>농업회사법인 우리화훼종묘(주) 공식 인터넷 쇼핑몰에 오신것을 환영합니다</p>
+            <div class="slide-line">
+                <span class="active"></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
         </div>
-
-        <div class="slider">
-            <button>‹</button>
-            <strong>08</strong>
-            <span>| 25</span>
-            <button>›</button>
-            <button>Ⅱ</button>
-        </div>
+        <button class="hero-arrow right">›</button>
     </section>
 
-    <section class="brand">
-        <h2>오늘의 브랜드</h2>
+    <section class="products inner">
+        <div class="section-title">
+            <h2>NEW ARRIVALS</h2>
+            <p>신상품</p>
+        </div>
 
-        <div class="brand-grid">
-            <article class="brand-card blue">
-                <p>1데이빅딜</p>
-                <h3>오늘만 역대급 혜택<br>인기 상품</h3>
+        <div class="product-grid">
+            <article class="product-card">
+                <span class="badge">신상품</span>
+                <div class="product-img orange"></div>
+                <h3>글라디올러스 구근 - 라이브오크</h3>
+                <p>글라디올러스 학명: Gladiolus gandavensis 꽃말: 젊음</p>
+                <div class="price"><del>1,000원</del> <strong>800원</strong></div>
             </article>
 
-            <article class="brand-card mint">
-                <p>추천 상품</p>
-                <h3>생활 필수품<br>특별 기획전</h3>
+            <article class="product-card">
+                <span class="badge brown">인기</span>
+                <div class="product-img red"></div>
+                <h3>글로리오사 구근 - 로스칠디아나</h3>
+                <p>강렬한 색상의 독특한 구근 상품입니다.</p>
+                <div class="price"><del>15,000원</del> <strong>7,000원</strong></div>
             </article>
 
-            <article class="brand-card black">
-                <p>단독 특가</p>
-                <h3>프리미엄 상품<br>오늘의 혜택</h3>
+            <article class="product-card">
+                <span class="badge">신상품</span>
+                <div class="product-img purple"></div>
+                <h3>클레마티스 포트 - 라스트 위스퍼</h3>
+                <p>덩굴을 이루며 자라는 식물, 큰꽃으아리라 불립니다.</p>
+                <div class="price"><del>20,000원</del> <strong>15,000원</strong></div>
+            </article>
+
+            <article class="product-card">
+                <span class="badge">신상품</span>
+                <div class="product-img white"></div>
+                <h3>클레마티스 포트 - 조</h3>
+                <p>작고 흰 꽃이 매력적인 포트 상품입니다.</p>
+                <div class="price"><del>20,000원</del> <strong>15,000원</strong></div>
+            </article>
+
+            <article class="product-card">
+                <span class="badge">신상품</span>
+                <div class="product-img pink"></div>
+                <h3>백합 구근 - 핑크 스타</h3>
+                <p>화려한 분홍빛이 돋보이는 백합 구근입니다.</p>
+                <div class="price"><del>9,000원</del> <strong>6,000원</strong></div>
+            </article>
+
+            <article class="product-card">
+                <span class="badge">신상품</span>
+                <div class="product-img violet"></div>
+                <h3>클레마티스 구근 - 퍼플 레인</h3>
+                <p>강한 생명력과 아름다운 색상이 특징입니다.</p>
+                <div class="price"><del>12,000원</del> <strong>9,000원</strong></div>
             </article>
         </div>
-    </section>
-
-    <section class="quick">
-        <article>
-            <h3>회원가입</h3>
-            <p>회원가입 후 게시판 기능을 사용할 수 있습니다.</p>
-            <a href="/member/signup">바로가기</a>
-        </article>
-
-        <article>
-            <h3>게시판</h3>
-            <p>간단한 CRUD 게시판을 사용할 수 있습니다.</p>
-            <a href="/board/list">바로가기</a>
-        </article>
-
-        <article>
-            <h3>관리자</h3>
-            <p>이후 배너와 상품을 관리자 페이지에서 관리합니다.</p>
-            <a href="#">준비중</a>
-        </article>
     </section>
 </main>
 
+<aside class="side-buttons">
+    <button>⌃</button>
+    <button>쿠폰</button>
+    <button>🎁</button>
+    <button>📢</button>
+</aside>
+
 <footer class="footer">
-    <p>© GREEN SHOP. All Rights Reserved.</p>
+    <div class="inner footer-grid">
+        <div>
+            <h3>e-shop 인터넷 쇼핑몰</h3>
+            <p>농업회사법인 우리화훼종묘(주)</p>
+        </div>
+        <div>
+            <h4>고객센터</h4>
+            <strong>010-8965-7892</strong>
+            <p>평일 09:00 ~ 18:00</p>
+        </div>
+        <div>
+            <h4>이용안내</h4>
+            <p>공지사항<br>FAQ<br>1:1 문의</p>
+        </div>
+        <div>
+            <h4>회사정보</h4>
+            <p>회사소개<br>개인정보처리방침<br>이용약관</p>
+        </div>
+        <div>
+            <h4>계좌정보</h4>
+            <p>농협 301-1234-5678-91</p>
+        </div>
+    </div>
 </footer>
 
 </body>
